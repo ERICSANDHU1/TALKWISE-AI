@@ -1,103 +1,117 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useState } from "react";
+import { UserButton, useUser } from "@stackframe/stack";
+import { useAuth } from "./AuthProvider";
+import { Button } from "../components/ui/button";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const user = useUser(); // From Stack
+  const { login } = useAuth(); // Our Convex login helper
+  const [synced, setSynced] = useState(false);
+  
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    console.log("📄 Home page mounted");
+    console.log("👤 Current user state:", user);
+
+    if (user && user.primaryEmail && !synced) {
+      console.log("🚀 Starting user sync process...");
+      
+      // Get the name from displayName or fallback to email username
+      const userName = user.displayName || user.primaryEmail.split('@')[0] || 'User';
+      console.log("👤 Using name:", userName);
+      
+      setSynced(true); // Set synced immediately to prevent multiple calls
+      
+      console.log("🚀 Starting user sync process...");
+      
+      
+      // Trigger Convex user creation/login
+      login(user.primaryEmail, userName)
+        .then(() => {
+          console.log("✅ Convex user sync successful");
+        })
+        .catch((err) => {
+          console.error("❌ Convex user sync failed:", err);
+          setSynced(false); // Reset on error so it can retry
+          setSynced(false); // Reset on error so it can retry
+        });
+    } else if (user && user.primaryEmail && synced) {
+      console.log("✅ User already synced, skipping...");
+    } else if (!user) {
+      console.log("⏳ No user yet, waiting for authentication...");
+    } else if (!user.primaryEmail) {
+      console.log("❌ User exists but no primary email found");
+    } else if (user && user.primaryEmail && synced) {
+      console.log("✅ User already synced, skipping...");
+    } else if (!user) {
+      console.log("⏳ No user yet, waiting for authentication...");
+    } else if (!user.primaryEmail) {
+      console.log("❌ User exists but no primary email found");
+    }
+  }, [user, login, synced]);
+
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center gap-4 p-4">
+      <h2 className="text-2xl font-bold">Welcome to Talkwise</h2>
+      <div className="flex flex-col sm:flex-row gap-4 items-center">
+        <Button onClick={() => console.log("Button clicked, current user:", user)}>
+          Subscribe us
+        </Button>
+        <div className="relative">
+          <UserButton />
+          <div className="mt-2 text-sm text-gray-500">
+            {user ? `Logged in as: ${user.primaryEmail}` : "Not logged in"}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
     </div>
   );
 }
+
+
+
+
+
+
+// "use client";
+
+// import { useEffect, useState } from "react";
+// import { UserButton, useUser } from "@stackframe/stack";
+// import { useAuth } from "./AuthProvider";
+// import { Button } from "../components/ui/button";
+
+// export default function Home() {
+//   const user = useUser(); // From Stack
+//   const { login } = useAuth(); // Our Convex login helper
+//   const [synced, setSynced] = useState(false);
+
+//   useEffect(() => {
+//     console.log("📄 Home page mounted");
+//     console.log("👤 Current user state:", user);
+
+//     if (user && user.primaryEmail && user.name && !synced) {
+//       console.log("🔄 Syncing user with Convex...");
+//       login(user.primaryEmail, user.name);
+//       setSynced(true);
+//     }
+//   }, [user, login, synced]);
+
+//   return (
+//     <div className="min-h-screen flex flex-col items-center justify-center gap-4 p-4">
+//       <h2 className="text-2xl font-bold">Welcome to MOCKLY</h2>
+//       <div className="flex flex-col sm:flex-row gap-4 items-center">
+//         <Button onClick={() => console.log("Button clicked, current user:", user)}>
+//           Subscribe us
+//         </Button>
+//         <div className="relative">
+//           <UserButton />
+//           <div className="mt-2 text-sm text-gray-500">
+//             {user ? `Logged in as: ${user.primaryEmail}` : "Not logged in"}
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
