@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🧠 Talkwise AI – Voice-Based Learning Assistant
 
-## Getting Started
+Talkwise AI is a voice-interactive web application designed to enhance learning through natural conversation. Built using cutting-edge AI and voice technologies, it provides an immersive educational experience for mock interviews, guided meditation, topic lectures, language learning, and Q&A prep.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
+## 🚀 Features
+
+- 🎙️ **Voice-Based Interaction** – Seamless voice conversations powered by [Vapi.ai](https://vapi.ai) and [AssemblyAI](https://www.assemblyai.com).
+- 🤖 **AI-Powered Responses** – Smart, context-aware replies using OpenAI's GPT models.
+- 🧘 **Guided Meditation** – Personalized mindfulness sessions using natural voice flow.
+- 💼 **Mock Interviews** – Simulate job interviews to build confidence and fluency.
+- 📚 **Topic Lectures** – Get lectures or summaries on specific topics in real-time.
+- 🌍 **Language Practice** – Speak and learn new languages conversationally.
+- ❓ **Q&A Mode** – Ask any question, get instant voice responses.
+- 🔒 **User Authentication** – Secure sign-up/sign-in with Stack Auth.
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology     | Purpose                              |
+|----------------|--------------------------------------|
+| **Next.js**    | Full-stack React framework           |
+| **React.js**   | Frontend library for UI components   |
+| **Tailwind CSS** | Utility-first CSS framework        |
+| **shadcn/ui**  | Styled React components              |
+| **Vapi.ai**    | Real-time voice communication        |
+| **AssemblyAI** | Speech-to-text transcription         |
+| **OpenAI**     | Natural language understanding       |
+| **Stack Auth** | User authentication & auth flows     |
+
+---
+
+## 📦 Installation
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/your-username/talkwise-ai.git
+   cd talkwise-ai
+2.Install dependencies:
+npm install
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn install
+
+3.  Set up environment variables
+   Create a .env.local file and add your keys:
+
+  NEXT_PUBLIC_OPENAI_API_KEY=your_openai_key
+  NEXT_PUBLIC_VAPI_API_KEY=your_vapi_key
+  NEXT_PUBLIC_ASSEMBLYAI_API_KEY=your_assemblyai_key
+  NEXT_PUBLIC_STACKAUTH_KEY=your_auth_key
+  Run the development server
+
+
+4.  npm run dev
+
+
+🧪 Usage:
+
+    After launching locally or deploying:
+
+    Use your microphone to talk with the assistant.
+
+    Select a mode (e.g., Interview, Meditation, Lecture).
+
+    Engage in back-and-forth conversation.
+   
+    Switch modes any time via the UI.
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📌 Roadmap  
+- ✅ Voice-based AI consultations  
+- ✅ Multiple doctor specialties  
+- ⬜ Prescription generation  
+- ⬜ Video consultations  
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🤝 Contributing  
+Contributions are welcome! Please fork this repo and submit a PR.  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📜 License  
+This project is licensed under the **MIT License**. 
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Made with 🔥❤️‍🔥 by [Eric Sandhu](https://github.com/ERICSANDHU1) && [Vanshika](https://github.com/vanshikaraje)
