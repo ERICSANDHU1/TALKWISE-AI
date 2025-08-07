@@ -58,23 +58,21 @@ yarn install
 
 🧪 Usage:
 
-    After launching locally or deploying:
+ After launching locally or deploying:
 
-    Use your microphone to talk with the assistant.
+ Use your microphone to talk with the assistant.
 
-    Select a mode (e.g., Interview, Meditation, Lecture).
+ Select a mode (e.g., Interview, Meditation, Lecture).
 
-    Engage in back-and-forth conversation.
+ Engage in back-and-forth conversation.
    
-    Switch modes any time via the UI.
+ Switch modes any time via the UI.
 
 ```
 
 ---
 
----
-
-## 📌 Roadmap  
+## 📌 Roadmap
 - ✅ Voice-based AI consultations  
 - ✅ Multiple doctor specialties  
 - ⬜ Prescription generation  
