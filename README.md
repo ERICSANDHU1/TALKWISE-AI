@@ -1,4 +1,4 @@
-# 🧠 Talkwise AI – Voice-Based Learning Assistant
+# 🧠 Talkwise AI – Voice-Based Learning Assistant                                                                         
 
 Talkwise AI is a voice-interactive web application designed to enhance learning through natural conversation. Built using cutting-edge AI and voice technologies, it provides an immersive educational experience for mock interviews, guided meditation, topic lectures, language learning, and Q&A prep.
 
@@ -86,7 +86,8 @@ Contributions are welcome! Please fork this repo and submit a PR.
 ---
 
 ## 📜 License  
-This project is licensed under the **MIT License**. 
+This project is licensed under the **MIT License**.
 
 
-Made with 🔥❤️‍🔥 by [Eric Sandhu](https://github.com/ERICSANDHU1) && [Vanshika](https://github.com/vanshikaraje)
+
+                                                                   
