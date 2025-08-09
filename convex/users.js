@@ -24,7 +24,7 @@ export const createUser = mutation({
     const userData = {
       name: args.name,
       email: args.email,
-      credits: 50000,
+      credits: 50000,      
       createdAt: new Date().toISOString()
     };
     
