@@ -115,7 +115,7 @@ export const sendVapiMessage = async (message) => {
         role: "user",
         content: message
       }
-    });
+    }); 
     return true;
   } catch (error) {
     console.error('Failed to send message to Vapi:', error);
