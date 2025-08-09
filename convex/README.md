@@ -60,7 +60,7 @@ export const myMutationFunction = mutation({
   handler: async (ctx, args) => {
     // Insert or modify documents in the database here.
     // Mutations can also read from the database like queries.
-    // See https://docs.convex.dev/database/writing-data.
+    // See https://docs.convex.dev/database/writing-data.       
     const message = { body: args.first, author: args.second };
     const id = await ctx.db.insert("messages", message);
 
@@ -88,3 +88,4 @@ function handleButtonPress() {
 Use the Convex CLI to push your functions to a deployment. See everything
 the Convex CLI can do by running `npx convex -h` in your project root
 directory. To learn more, launch the docs with `npx convex docs`.
+  
